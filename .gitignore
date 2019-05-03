@@ -1,0 +1,14 @@
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+/.vs
+/__vm
+/Debug
+*.suo
+*.hex
+*.elf
+*.o
+*.d
+*.filter
+*.user
+*.sln

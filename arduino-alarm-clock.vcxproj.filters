@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="arduino-alarm-clock.ino" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.arduino-alarm-clock.vsarduino.h">

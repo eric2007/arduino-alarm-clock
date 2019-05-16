@@ -8,6 +8,7 @@
 #include <Arduino.h>
 #define DHTpin 2
 #define null NULL //my way
+#define EEPROM_
 #define DC 9
 #define RST 8
 #define DATA 11
@@ -26,10 +27,17 @@ U8G2_SSD1306_128X64_NONAME_1_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);
 bool OKbutton;
 bool UPbutton;
 bool DOWNbutton;
-byte temp;
-byte humi;
+bool alarmStop;
+unsigned char temp;
+unsigned char humi;
+const unsigned char alarmSize = sizeof(Alarm);
 String date;
 RtcDateTime now;
+struct Alarm{
+	unsigned char hour;
+	unsigned char minute;
+	unsigned char dayOfWeek;
+};
 void setup() {
   // put your setup code here, to run once:
   u8g2.begin();
@@ -40,11 +48,48 @@ void setup() {
   pinMode(DOWNpin,INPUT_PULLUP);
   pinMode(OKpin,INPUT_PULLUP);
 }
-
+/*EEPROM first byte
+	empty	empty  alarmNum
+0b    00        00		0000
+*/
+/*void readAlarm() {
+	EEPROM.get(0,)
+}
+*/
 void loop() {
   // put your main code here, to run repeatedly:
   getSensors();
-  delay(1000);
+  printData();
+  delay(900);
+}
+void alarm() {
+	//if()
+	while (alarmStop) {
+		tone(9, 440, 50);
+		delay(100);
+		if (!digitalRead(OKpin)) {
+			alarmStop = false;
+			continue;
+		}
+		tone(9, 440, 50);
+		delay(100);
+		if (!digitalRead(OKpin)) {
+			alarmStop = false;
+			continue;
+		}
+		tone(9, 440, 50);
+		delay(100);
+		if (!digitalRead(OKpin)) {
+			alarmStop = false;
+			continue;
+		}
+		tone(9, 440, 50);
+		delay(600);
+		if (!digitalRead(OKpin)) {
+			alarmStop = false;
+			continue;
+		}
+	}
 }
 void getSensors(){
   now = rtc.GetDateTime();
@@ -56,30 +101,51 @@ void getSensors(){
 void printData() {
   u8g2.firstPage();
   do{
-    u8g2.setFont(u8g2_font_ncenB08_tr);
+    u8g2.setFont(u8g2_font_ncenB12_tr);
     u8g2.setCursor(0, 16);
-    char tmp[50];
-    sprintf(tmp, "%4d-%2d-%2d    %s", now.Year(),now.Month(),now.Day(),getDay(now.DayOfWeek()));
-    u8g2.print(tmp);
-  }while (u8g2.nextPage());
+    u8g2.print(now.Year());
+    u8g2.print('-');
+	u8g2.print(now.Month());
+    u8g2.print('-');
+	u8g2.print(now.Day());
+	u8g2.print(' ');
+	u8g2.print(getDay(now.DayOfWeek()));
+	u8g2.setFont(u8g2_font_ncenB24_tr);
+	u8g2.setCursor(4, 42);
+	u8g2.print(now.Hour());
+	u8g2.print(':');
+	u8g2.print(now.Minute());
+	u8g2.setFont(u8g2_font_ncenB14_tr);
+	u8g2.print(':');
+	u8g2.print(now.Second());
+	u8g2.setCursor(3,64);
+	u8g2.print(temp);
+	u8g2.print("oC ");
+	u8g2.print(humi);
+	u8g2.print("%RH");
+	Serial.println(now.Hour());
+	Serial.println(now.Minute());
+	Serial.println(now.Second());
+  } while (u8g2.nextPage());
 }
-String getDay(byte DOW) {
-  switch (DOW){
+String getDay(unsigned char DOW) {
+  switch(DOW){
     case 0:
-      return "Sunday";
+      return "Sun.";
     case 1:
-      return "Monday";
+      return "Mon.";
     case 2:
-      return "Tuesday";
+      return "Tue.";
     case 3:
-      return "Wednesday";
+      return "Wed.";
     case 4:
-      return "Thursday";
+      return "Thu.";
     case 5:
-      return "Friday";
+      return "Fri.";
     case 6:
-      return "Saturday";
+      return "Sat.";
     default:
-      return "Error";
+      return "Err.";
   }
 }
+

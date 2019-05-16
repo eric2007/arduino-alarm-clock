@@ -85,7 +85,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\arduino-alarm-clock;D:\arduino-PR-beta1.9-BUILD-105\hardware\arduino\avr\libraries\EEPROM\src;$(ProjectDir)..\libraries\U8g2\src;D:\arduino-PR-beta1.9-BUILD-105\hardware\arduino\avr\libraries\Wire\src;$(ProjectDir)..\libraries\SimpleDHT;$(ProjectDir)..\libraries\Rtc_by_Makuna\src;D:\arduino-PR-beta1.9-BUILD-105\hardware\arduino\avr\libraries\SPI\src;D:\arduino-PR-beta1.9-BUILD-105\hardware\arduino\avr\libraries\Wire\src\utility;D:\arduino-PR-beta1.9-BUILD-105\libraries;D:\arduino-PR-beta1.9-BUILD-105\hardware\arduino\avr\libraries;$(ProjectDir)..\libraries;D:\arduino-PR-beta1.9-BUILD-105\hardware\arduino\avr\cores\arduino;D:\arduino-PR-beta1.9-BUILD-105\hardware\arduino\avr\variants\standard;D:\arduino-PR-beta1.9-BUILD-105\hardware\tools\avr\avr\include;D:\arduino-PR-beta1.9-BUILD-105\hardware\tools\avr\avr\include\avr;D:\arduino-PR-beta1.9-BUILD-105\hardware\tools\avr\lib\gcc\avr\4.8.1\include;D:\arduino-PR-beta1.9-BUILD-105\hardware\tools\avr\lib\gcc\avr\4.9.2\include;D:\arduino-PR-beta1.9-BUILD-105\hardware\tools\avr\lib\gcc\avr\4.9.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\arduino-alarm-clock;D:\arduino-PR-beta1.9-BUILD-105\hardware\arduino\avr\libraries\EEPROM\src;D:\arduino-PR-beta1.9-BUILD-105\hardware\arduino\avr\libraries\Wire\src;D:\arduino-PR-beta1.9-BUILD-105\hardware\arduino\avr\libraries\Wire\src\utility;$(ProjectDir)..\libraries\SimpleDHT;$(ProjectDir)..\libraries\U8g2\src;$(ProjectDir)..\libraries\Rtc_by_Makuna\src;D:\arduino-PR-beta1.9-BUILD-105\libraries;D:\arduino-PR-beta1.9-BUILD-105\hardware\arduino\avr\libraries;$(ProjectDir)..\libraries;D:\arduino-PR-beta1.9-BUILD-105\hardware\arduino\avr\cores\arduino;D:\arduino-PR-beta1.9-BUILD-105\hardware\arduino\avr\variants\standard;D:\arduino-PR-beta1.9-BUILD-105\hardware\tools\avr\avr\include;D:\arduino-PR-beta1.9-BUILD-105\hardware\tools\avr\avr\include\avr;D:\arduino-PR-beta1.9-BUILD-105\hardware\tools\avr\lib\gcc\avr\4.8.1\include;D:\arduino-PR-beta1.9-BUILD-105\hardware\tools\avr\lib\gcc\avr\4.9.2\include;D:\arduino-PR-beta1.9-BUILD-105\hardware\tools\avr\lib\gcc\avr\4.9.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ProjectDir)__vm\.arduino-alarm-clock.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
       <PreprocessorDefinitions>__AVR_atmega328p__;__AVR_ATmega328P__;_VMDEBUG=1;F_CPU=16000000L;ARDUINO=10900;ARDUINO_AVR_UNO;ARDUINO_ARCH_AVR;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -101,6 +101,7 @@
     <None Include="arduino-alarm-clock.ino">
       <FileType>CppCode</FileType>
     </None>
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.arduino-alarm-clock.vsarduino.h" />
